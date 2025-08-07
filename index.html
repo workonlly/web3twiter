@@ -1,121 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>twiterW3</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f0f2f5;
-            color: #1c1e21;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-        }
-        .container {
-            width: 100%;
-            max-width: 600px;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-top: 40px;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        h1 {
-            font-size: 28px;
-            color: #1DA1F2; /* Twitter Blue */
-            text-align: center;
-            margin-top: 0;
-            margin-bottom: 10px;
-        }
-        p {
-            text-align: center;
-            color: #657786;
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-        .post-box {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #000000;
-            border-radius: 8px;
-            font-size: 16px;
-            min-height: 80px;
-            box-sizing: border-box;
-            resize: vertical;
-            margin-bottom: 10px;
-        }
-        .post-button {
-            display: block;
-            width: 100px;
-            padding: 10px 15px;
-            background-color: #1DA1F2;
-            color: white;
-            border: none;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 15px;
-            cursor: pointer;
-            margin-left: auto;
-            transition: background-color 0.3s;
-        }
-        .post-button:hover {
-            background-color: #1a91da;
-        }
-        .comments-section {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #e1e8ed;
-        }
-        .comments-section h2 {
-            font-size: 18px;
-            color: #14171a;
-            margin-bottom: 15px;
-        }
-        .comment {
-            padding: 10px;
-            border-radius: 8px;
-            background-color: #f5f8fa;
-            margin-bottom: 10px;
-            white-space: pre-wrap; /* preserve line breaks */
-        }
-        .status {
-            margin-top: 15px;
-            font-weight: bold;
-            color: #e0245e; /* pink/red */
-            min-height: 20px;
-        }
-    </style>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>twiterW3</title>
+	<style>
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+			background-color: #f0f2f5;
+			color: #1c1e21;
+			margin: 0;
+			display: flex;
+			justify-content: center;
+			align-items: flex-start;
+			min-height: 100vh;
+		}
+		.container {
+			width: 100%;
+			max-width: 600px;
+			background-color: #ffffff;
+			border-radius: 8px;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			margin-top: 40px;
+			padding: 20px;
+			box-sizing: border-box;
+		}
+		h1 {
+			font-size: 28px;
+			color: #1DA1F2; /* Twitter Blue */
+			text-align: center;
+			margin-top: 0;
+			margin-bottom: 10px;
+		}
+		p {
+			text-align: center;
+			color: #657786;
+			font-size: 16px;
+			margin-bottom: 20px;
+		}
+		.post-box {
+			width: 100%;
+			padding: 10px;
+			border: 1px solid #000000;
+			border-radius: 8px;
+			font-size: 16px;
+			min-height: 80px;
+			box-sizing: border-box;
+			resize: vertical;
+			margin-bottom: 10px;
+		}
+		.post-button {
+			display: block;
+			width: 100px;
+			padding: 10px 15px;
+			background-color: #1DA1F2;
+			color: white;
+			border: none;
+			border-radius: 20px;
+			font-weight: bold;
+			font-size: 15px;
+			cursor: pointer;
+			margin-left: auto;
+			transition: background-color 0.3s;
+		}
+		.post-button:hover {
+			background-color: #1a91da;
+		}
+		.comments-section {
+			margin-top: 30px;
+			padding-top: 20px;
+			border-top: 1px solid #e1e8ed;
+		}
+		.comments-section h2 {
+			font-size: 18px;
+			color: #14171a;
+			margin-bottom: 15px;
+		}
+		.comment {
+			padding: 10px;
+			border-radius: 8px;
+			background-color: #f5f8fa;
+			margin-bottom: 10px;
+			white-space: pre-wrap; /* preserve line breaks */
+		}
+		.status {
+			margin-top: 15px;
+			font-weight: bold;
+			color: #e0245e; /* pink/red */
+			min-height: 20px;
+		}
+	</style>
 
-    <!-- Web3.js library -->
-    <script src="https://cdn.jsdelivr.net/npm/web3@1.8.0/dist/web3.min.js"></script>
+	<!-- Web3.js library -->
+	<script src="https://cdn.jsdelivr.net/npm/web3@1.8.0/dist/web3.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to twiterW3</h1>
-        <p>Share your thoughts with the world.</p>
+	<div class="container">
+		<h1>Welcome to twiterW3</h1>
+		<p>Share your thoughts with the world.</p>
 
-        <textarea id="tweetContent" class="post-box" placeholder="What's happening?"></textarea>
-        <button id="postBtn" class="post-button">Post</button>
+		<textarea id="tweetContent" class="post-box" placeholder="What's happening?"></textarea>
+		<button id="postBtn" class="post-button">Post</button>
 
-        <div class="status" id="statusMsg"></div>
+		<div class="status" id="statusMsg"></div>
 
-        <div class="comments-section" id="commentsSection">
-            <h2>Comments</h2>
-            <!-- Tweets will be appended here -->
-        </div>
-    </div>
+		<div class="comments-section" id="commentsSection">
+			<h2>Comments</h2>
+			<!-- Tweets will be appended here -->
+		</div>
+	</div>
 
-    <script>
-        // *** YOUR CONTRACT DETAILS HERE ***
-        const contractAddress = "0x2DE0D9F3f4eDDC62cD853070426fFeac7Aa47019"; // <-- Replace this with your smart contract deployed address
-        const contractABI = [
-[
-	{
+	<script>
+		// *** YOUR CONTRACT DETAILS HERE ***
+		const contractAddress = "0x2DE0D9F3f4eDDC62cD853070426fFeac7Aa47019"; // <-- Replace this with your smart contract deployed address
+		const contractABI = [
+{
 		"anonymous": false,
 		"inputs": [
 			{
@@ -431,109 +430,109 @@
 		"type": "function"
 	}
 ]
-        ];
+		;
 
-        let web3;
-        let contract;
-        let userAccount;
+		let web3;
+		let contract;
+		let userAccount;
 
-        const statusMsg = document.getElementById("statusMsg");
-        const postBtn = document.getElementById("postBtn");
-        const tweetContent = document.getElementById("tweetContent");
-        const commentsSection = document.getElementById("commentsSection");
+		const statusMsg = document.getElementById("statusMsg");
+		const postBtn = document.getElementById("postBtn");
+		const tweetContent = document.getElementById("tweetContent");
+		const commentsSection = document.getElementById("commentsSection");
 
-        // Display status message
-        function setStatus(message, isError = false) {
-            statusMsg.style.color = isError ? "#e0245e" : "#28a745";
-            statusMsg.innerText = message;
-        }
+		// Display status message
+		function setStatus(message, isError = false) {
+			statusMsg.style.color = isError ? "#e0245e" : "#28a745";
+			statusMsg.innerText = message;
+		}
 
-        // Connect to MetaMask and instantiate contract
-        async function init() {
-            if (window.ethereum) {
-                try {
-                    web3 = new Web3(window.ethereum);
-                    // Request account access
-                    await window.ethereum.request({ method: 'eth_requestAccounts' });
-                    const accounts = await web3.eth.getAccounts();
-                    userAccount = accounts[0];
-                    contract = new web3.eth.Contract(contractABI, contractAddress);
-                    setStatus("Connected to MetaMask with account: " + userAccount, false);
-                    loadTweets();
-                } catch (err) {
-                    setStatus("User denied access to MetaMask", true);
-                }
-            } else {
-                setStatus("MetaMask is not installed. Please install it to interact.", true);
-            }
-        }
+		// Connect to MetaMask and instantiate contract
+		async function init() {
+			if (window.ethereum) {
+				try {
+					web3 = new Web3(window.ethereum);
+					// Request account access
+					await window.ethereum.request({ method: 'eth_requestAccounts' });
+					const accounts = await web3.eth.getAccounts();
+					userAccount = accounts[0];
+					contract = new web3.eth.Contract(contractABI, contractAddress);
+					setStatus("Connected to MetaMask with account: " + userAccount, false);
+					loadTweets();
+				} catch (err) {
+					setStatus("User denied access to MetaMask", true);
+				}
+			} else {
+				setStatus("MetaMask is not installed. Please install it to interact.", true);
+			}
+		}
 
-        // Load all tweets from current user
-        async function loadTweets() {
-            if (!contract || !userAccount) {
-                setStatus("Not connected", true);
-                return;
-            }
-            setStatus("Loading your tweets...");
-            try {
-                const tweets = await contract.methods.getAllTweets(userAccount).call();
-                displayTweets(tweets);
-                setStatus("Tweets loaded.");
-            } catch (err) {
-                setStatus("Error loading tweets: " + err.message, true);
-            }
-        }
+		// Load all tweets from current user
+		async function loadTweets() {
+			if (!contract || !userAccount) {
+				setStatus("Not connected", true);
+				return;
+			}
+			setStatus("Loading your tweets...");
+			try {
+				const tweets = await contract.methods.getAllTweets(userAccount).call();
+				displayTweets(tweets);
+				setStatus("Tweets loaded.");
+			} catch (err) {
+				setStatus("Error loading tweets: " + err.message, true);
+			}
+		}
 
-        // Display tweets in the comments section
-        function displayTweets(tweets) {
-            // Clear all except the heading
-            commentsSection.innerHTML = "<h2>Comments</h2>";
-            if (tweets.length === 0) {
-                const noTweet = document.createElement("div");
-                noTweet.className = "comment";
-                noTweet.innerText = "No tweets to display yet.";
-                commentsSection.appendChild(noTweet);
-                return;
-            }
-            tweets.forEach(tweet => {
-                const div = document.createElement('div');
-                div.className = "comment";
-                div.textContent = tweet;
-                commentsSection.appendChild(div);
-            });
-        }
+		// Display tweets in the comments section
+		function displayTweets(tweets) {
+			// Clear all except the heading
+			commentsSection.innerHTML = "<h2>Comments</h2>";
+			if (tweets.length === 0) {
+				const noTweet = document.createElement("div");
+				noTweet.className = "comment";
+				noTweet.innerText = "No tweets to display yet.";
+				commentsSection.appendChild(noTweet);
+				return;
+			}
+			tweets.forEach(tweet => {
+				const div = document.createElement('div');
+				div.className = "comment";
+				div.textContent = tweet;
+				commentsSection.appendChild(div);
+			});
+		}
 
-        // Create a new tweet on blockchain
-        async function createTweet(content) {
-            if (!contract || !userAccount) {
-                setStatus("Please connect your wallet first", true);
-                return;
-            }
+		// Create a new tweet on blockchain
+		async function createTweet(content) {
+			if (!contract || !userAccount) {
+				setStatus("Please connect your wallet first", true);
+				return;
+			}
 
-            if (content.length === 0 || content.length > 290) {
-                setStatus("Tweet content must be between 1 and 290 characters", true);
-                return;
-            }
+			if (content.length === 0 || content.length > 290) {
+				setStatus("Tweet content must be between 1 and 290 characters", true);
+				return;
+			}
 
-            setStatus("Sending tweet...");
+			setStatus("Sending tweet...");
 
-            try {
-                await contract.methods.createTweet(content).send({ from: userAccount });
-                setStatus("Tweet posted successfully!");
-                tweetContent.value = '';
-                loadTweets(); // refresh tweets after posting
-            } catch (error) {
-                setStatus("Error posting tweet: " + error.message, true);
-            }
-        }
+			try {
+				await contract.methods.createTweet(content).send({ from: userAccount });
+				setStatus("Tweet posted successfully!");
+				tweetContent.value = '';
+				loadTweets(); // refresh tweets after posting
+			} catch (error) {
+				setStatus("Error posting tweet: " + error.message, true);
+			}
+		}
 
-        // Event listener for Post button
-        postBtn.addEventListener('click', () => {
-            createTweet(tweetContent.value.trim());
-        });
+		// Event listener for Post button
+		postBtn.addEventListener('click', () => {
+			createTweet(tweetContent.value.trim());
+		});
 
-        // Initialize on page load
-        window.addEventListener('load', init);
-    </script>
+		// Initialize on page load
+		window.addEventListener('load', init);
+	</script>
 </body>
 </html>
