@@ -475,7 +475,12 @@
 			}
 			setStatus("Loading your tweets...");
 			try {
-				const tweets = await contract.methods.getAllTweets(userAccount).call();
+				const tweetContents = await contract.methods.getAllTweets(userAccount).call();
+				const tweets = [];
+				for (let i = 0; i < tweetContents.length; i++) {
+					const tweet = await contract.methods.getTweet(userAccount, i).call();
+					tweets.push(tweet);
+				}
 				displayTweets(tweets);
 				setStatus("Tweets loaded.");
 			} catch (err) {
@@ -497,7 +502,42 @@
 			tweets.forEach(tweet => {
 				const div = document.createElement('div');
 				div.className = "comment";
-				div.textContent = tweet;
+				// Show tweet content and info
+				div.innerHTML = `<strong>${tweet.author}</strong>: ${tweet.content}<br>
+					<small>${new Date(tweet.timestamp * 1000).toLocaleString()}</small><br>
+					<span>Likes: ${tweet.likes}</span> `;
+
+				// Like button
+				const likeBtn = document.createElement('button');
+				likeBtn.textContent = 'Like';
+				likeBtn.style.marginRight = '8px';
+				likeBtn.onclick = async () => {
+					setStatus('Liking tweet...');
+					try {
+						await contract.methods.likeTweet(tweet.author, tweet.id).send({ from: userAccount });
+						setStatus('Tweet liked!');
+						loadTweets();
+					} catch (err) {
+						setStatus('Error liking tweet: ' + err.message, true);
+					}
+				};
+
+				// Dislike button
+				const dislikeBtn = document.createElement('button');
+				dislikeBtn.textContent = 'Dislike';
+				dislikeBtn.onclick = async () => {
+					setStatus('Disliking tweet...');
+					try {
+						await contract.methods.dislikeTweet(tweet.author, tweet.id).send({ from: userAccount });
+						setStatus('Tweet disliked!');
+						loadTweets();
+					} catch (err) {
+						setStatus('Error disliking tweet: ' + err.message, true);
+					}
+				};
+
+				div.appendChild(likeBtn);
+				div.appendChild(dislikeBtn);
 				commentsSection.appendChild(div);
 			});
 		}
